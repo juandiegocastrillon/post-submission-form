@@ -1,0 +1,93 @@
+.input_box
+{
+padding: 40px;
+margin: 100 auto;
+width: 400px;
+background: white;
+box-shadow: 0px 5px 5px #888;
+border: 1px solid #888;
+}
+
+#select-post
+{
+margin-bottom: 20px;
+width: 60%;
+position: relative;
+left: 20%;
+}
+
+body
+{
+background-image:url('wavegrid.png');
+background-repeat:repeat;
+}
+
+.break
+{
+width: 78px;
+margin: 0 auto;
+border: 1px solid rgb(194, 194, 194);
+margin-bottom: 33px;
+}
+
+.specs, .img_link_specs
+{
+font-size: 12;
+color:rgb(185, 185, 185); 
+float:right;
+}
+
+.tag_specs
+{
+font-size:12;
+color:rgb(185,185,185);
+float: right;
+margin: -27px 0 5;
+}
+
+body .form-horizontal .control-label
+{
+text-align: left;
+width: 135px;
+}
+
+body .form-horizontal .controls
+{
+margin-left: 150px;
+}
+
+.form-horizontal .control-group:last-child
+{
+margin-top: 20px;
+}
+
+#url, #subtitle, #tags
+{
+width:250px;
+}
+
+#success
+{
+text-align: center;
+font-size: 25px;
+}
+
+#error
+{
+margin: 0px;
+color: red;
+font-size: 14px;
+}
+
+.btn
+{
+float:right;
+}
+.tag
+{
+margin: 1px;
+}
+.tag:hover
+{
+background-color:#3BB1EE;
+}
