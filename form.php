@@ -11,7 +11,6 @@
 <body>
 <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
-		var_dump($_POST);
                 $errormsg = array(
                         "url_errormsg" => "",
 			"lin_errormsg" => "",
@@ -24,13 +23,15 @@
                 //Check if URL, subtitle, tag fields are empty
                 foreach ($fields as $field)
                 {
-		//	if (in_array($field,$_POST)){
 				if($_POST[$field]){
 					continue;
 				}
 				else { $errormsg[substr($field,0,3) . "_errormsg"] = "Please enter a ".$field; }
-		//	}
                 }
+		//if post-type is not an Image, delete lin_errormsg
+		if($_POST['post-type']!="Image"){
+			$errormsg['lin_errormsg']='';
+		}
 
                 //Check if Valid URL
                 if( empty($errormsg["url_errormsg"]) && !filter_var($_POST['url'],FILTER_VALIDATE_URL)){
@@ -73,7 +74,7 @@
 	  </div>
 	  <p class="specs"></p>
 	  <input type="hidden" id="link" name="link" placeholder="Paste Link"  value="<?php echo isset( $_POST['link']) ? $_POST['link'] : '' ?>" >
-	  <p id="error"><?php echo $errormsg['lin_errormsg']; ?></p>
+	  <p id="error" class="link"><?php echo $errormsg['lin_errormsg']; ?></p>
 	  <div class="control-group">
 	    <label class="control-label">Subtitle:</label>
 	    <div class="controls">
@@ -97,6 +98,7 @@
 	</form>
 	</div>
 <?php
+	//if there are no errors->continue to confirmation page
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 if(!array_filter($errormsg)) {
 			echo'<script>$(\'form\').get(0).setAttribute(\'action\',\'confirmation.php\');</script>';

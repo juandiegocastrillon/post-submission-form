@@ -8,9 +8,13 @@
 </head>
 <body>
 	<div class="input_box">
+		<?php //if POST request was received... 
+		if ($_SERVER["REQUEST_METHOD"] == "POST"){ ?>
+
 		<p id="success">Success!</p>
 		<p>Your post has been submitted for review. Check back to the Gallery in the future to see your post.</p>
 		<?php 
+			//grab POST request fields
 			$post_type =  $_POST['post-type']; 
 			$url = $_POST['url'];
 			$subtitle = $_POST['subtitle'];
@@ -18,6 +22,7 @@
 			
 			$content = "";
 
+			//populate the email content depending on post type
 			switch ($post_type)
 			{
 				case "Image":
@@ -48,6 +53,7 @@
 			$content .= ' <br>' . $subtitle;
 			$content .= ' tags: ' . $tags ;
 
+			//populate the email details
 			$to = "n3jw0czv@s92826500.onlinehome.us";
 			$subject = $subtitle;
 			$message = $content;
@@ -56,10 +62,11 @@
 			
 			//mail form
 			//mail($to,$subject,$message,$headers);
-			echo "Mail Sent";
-		?>	  
-		<p>Content: <?php echo $content ?> </p>
-
+		} 
+		//if POST request was never received
+		else{ ?>
+			<p>please go to <a href="makeymakey.com/form.php">this</a> page to submit a post</p>
+		<?php } ?>
 	</div>
 
 </body>
