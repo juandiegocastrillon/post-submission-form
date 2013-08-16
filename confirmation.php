@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="./form_style.css" rel="stylesheet" media="screen">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 

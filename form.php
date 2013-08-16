@@ -1,16 +1,17 @@
 <!DOCTYPE>
 <html>
 <head>
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="all" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" media="all" />
     <link href="./form_style.css" rel="stylesheet" media="all" />
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="./form.js"></script>
+    <title>Submission Form</title>
 </head>
 <body>
 <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
+		var_dump($_POST);
                 $errormsg = array(
                         "url_errormsg" => "",
 			"lin_errormsg" => "",
@@ -71,6 +72,8 @@
 	    </div>
 	  </div>
 	  <p class="specs"></p>
+	  <input type="hidden" id="link" name="link" placeholder="Paste Link"  value="<?php echo isset( $_POST['link']) ? $_POST['link'] : '' ?>" >
+	  <p id="error"><?php echo $errormsg['lin_errormsg']; ?></p>
 	  <div class="control-group">
 	    <label class="control-label">Subtitle:</label>
 	    <div class="controls">

@@ -6,36 +6,37 @@ $(document).ready(function(){
                         select_post = "Post";
                 $(".post-type").text(select_post + " URL:");
                 var specs = "";
-var value="<?php echo isset( $_POST[\'link\']) ? $_POST[\'link\'] : '' ?>"
-		var img_link =          ' <label class="post-type control-label">Image Link:</label><div class="controls"><input type="text" id="link" name="link" placeholder="Paste link" ><p id="error"><?php echo $errormsg[\'lin_errormsg\']; ?></p></div>';
-	
 
                 switch(select_post)
                 {
                         case "Image":
+				//Adds specs on each type of input
                                 specs = "URL should end with a valid image extension (.jpg, .png, .jpeg, etc.)";
-				$(".specs").after('<div class="control-group" id="img_link"></div>');
-				$("#img_link").after('<p class="img_link_specs" style="margin: -25px 0 10px;"></p>');
-				$("#img_link").html(img_link);
+
+				//Adds an extra input field to posts with an Image -- called Link
+				$("#link").attr('type','text');
+				$("#link").next("p").andSelf().wrapAll('<div class="controls" />');
+				$("#link").parent().wrap('<div class="control-group" id="link_wrap"/>');
+				$("#link").parent().before('<label class="post-type control-label">Image Link:</label>');
+				$("#link_wrap").after('<p class="img_link_specs" style="margin: -25px 0 10px;"></p>');
 				$(".img_link_specs").text("What do you want your picture to link to?");
                                 break;
                         case "YouTube":
                                 specs = "ex: http://www.youtube.com/watch?v=__D5qBvr2Cw";
-				$("#img_link").remove();
 				$(".img_link_specs").remove();
                                 break;
                         case "Vimeo":
                                 specs = "ex: http://vimeo.com/71893945";
-				$("#img_link").remove();
+				$("#link_wrap").remove();
 				$(".img_link_specs").remove();
                                 break;
                         case "Vine":
                                 specs = "ex: https://vine.co/v/hZmEpe0mV7I";
-				$("#img_link").remove();
+				$("#link_wrap").remove();
 				$(".img_link_specs").remove();
                                 break;
 			default:
-				$("#img_link").remove();
+				$("#link_wrap").remove();
 				$(".img_link_specs").remove();
 				
                 }
